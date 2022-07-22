@@ -1,1 +1,0 @@
-/usr/bin/g++  -g  -rdynamic CMakeFiles/cuda_lessons.dir/main.cpp.o  -o cuda_lessons 
