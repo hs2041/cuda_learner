@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/hardeep/repos/cuda_learner/build",
+  "command": "/usr/bin/g++    -g   -o CMakeFiles/cuda_lessons.dir/main.cpp.o -c /home/hardeep/repos/cuda_learner/main.cpp",
+  "file": "/home/hardeep/repos/cuda_learner/main.cpp"
+}
+]
