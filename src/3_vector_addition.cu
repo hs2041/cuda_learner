@@ -130,9 +130,6 @@ int main(int argc, char** argv) {
     long long int n = std::stoi(argv[1]);
 
     initialize(n);
-
-
-
     return 0;
 
 }

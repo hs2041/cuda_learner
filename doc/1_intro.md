@@ -1,12 +1,3 @@
-# CUDA LEARNING
- These are my notes while learning CUDA  
-
-
-
-## Table of Contents
-
-1. [Introduction](doc/1_intro.md)
-2. [Basic Concepts](doc/2_concepts.md)
 
 ## Cuda Architecture
 1. Shared memory across gpu 
