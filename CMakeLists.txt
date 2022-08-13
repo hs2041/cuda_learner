@@ -26,3 +26,6 @@ target_link_libraries(gtest ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
 
 add_executable(c3 src/c3.cu)
 target_link_libraries(c3 ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+add_executable(c4 src/c4.cu)
+target_link_libraries(c4 ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+
