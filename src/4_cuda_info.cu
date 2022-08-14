@@ -29,6 +29,15 @@ int main()
     std::cout << "max grid dim 1: " << props.maxGridSize[1] << std::endl;
     std::cout << "max grid dim 2: " << props.maxGridSize[2] << std::endl;
 
+    int driver;
+    cudaDriverGetVersion(&driver);
+    std::cout<< "driver version:  " << driver << std::endl;
+
+    int runtime;
+    cudaRuntimeGetVersion(&runtime);
+    std::cout<< "runtime version:  " << runtime << std::endl;
+
+    std::cout<< "Device Global memory (Gb): "<<props.totalGlobalMem/(1<<30)<<std::endl;
     return 0;
 
 }

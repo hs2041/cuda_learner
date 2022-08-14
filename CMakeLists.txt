@@ -27,6 +27,33 @@ target_link_libraries(gtest ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
 
 add_executable(3_vector_addition src/3_vector_addition.cu)
 target_link_libraries(3_vector_addition ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+target_link_libraries(3_vector_addition -lcublas -lcurand) # Linking cublas library
+
 add_executable(4_cuda_info src/4_cuda_info.cu)
 target_link_libraries(4_cuda_info ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
 
+option(VIDEOS_ENABLED "Demo of videos" ON)
+
+if(VIDEOS_ENABLED)
+
+    add_executable(1_add_unified src/videos/1_add_unified.cu)
+    target_link_libraries(1_add_unified ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+    target_link_libraries(1_add_unified -lcublas -lcurand) # Linking cublas library
+
+    add_executable(2_mat_mul src/videos/2_mat_mul.cu)
+    target_link_libraries(2_mat_mul ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+    target_link_libraries(2_mat_mul -lcublas -lcurand) # Linking cublas library
+
+    add_executable(3_tiled_mat_mul src/videos/3_tiled_mat_mul.cu)
+    target_link_libraries(3_tiled_mat_mul ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+    target_link_libraries(3_tiled_mat_mul -lcublas -lcurand) # Linking cublas library
+    
+    add_executable(4_cublas_add src/videos/4_cublas_add.cu)
+    target_link_libraries(4_cublas_add ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+    target_link_libraries(4_cublas_add -lcublas -lcurand) # Linking cublas library
+
+    add_executable(5_cublas_matmul src/videos/5_cublas_matmul.cu)
+    target_link_libraries(5_cublas_matmul ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+    target_link_libraries(5_cublas_matmul -lcublas -lcurand) # Linking cublas library
+
+endif(VIDEOS_ENABLED)

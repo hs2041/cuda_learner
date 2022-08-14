@@ -1,50 +1,17 @@
 
-## Cuda Architecture
-1. Shared memory across gpu 
-2. Block level memory  
-3. Individual cache for each thread 
-1. 
 
-Compiler used: nvcc
+## Unified memory management
 
-Threads are in a block which are in a grid 
-Inter-block syncing is possible but intra-block is hard 
+Unified Memory is a single memory address space accessible from any processor in a system. Unified Memory in CUDA makes memory acces easy by providing a single memory space accessible by all GPUs and CPUs in your system. To allocate data in unified memory, call cudaMallocManaged(), which returns a pointer that you can access from host (CPU) code or device (GPU) code. To free the data, just pass the pointer to cudaFree().
 
-Streaming Multiprocessors (SMs)
+Just one more thing: the CPU needs to wait until the kernel is done before it accesses the results (because CUDA kernel launches don’t block the calling CPU thread). To do this one can call call cudaDeviceSynchronize() before doing the final error checking on the CPU.
 
-Compute capability versions (3.0 is common version)
+## Time Profiling 
 
-SIMT architecture (Single Instance multiple threads)
-Each thread runs the same instruction
+Use: clock_t clock() object inside kernel functions for profiling. 
 
-Thread execution is done in groups: __Warps__ which is a group of 32 threads 
+Using cudamallocmanaged, memprefetchasync and cudadevicesynchronize 
 
-## Running a kernel 
+## Tiled matrix multiplication
 
-* Blocks are assigned to available SMs 
-* Each block is split into warps which are scheduled and run on SMs
-* Multiple warps/blocks run on each SM
-
-
-## Performance optimization
-
-### Visual Profiler 
-
-__nvvp__ is the official profiler for CUDA programming. To enable profiling of your executable, compile it with the *lineinfo* flag then use the nvprof executable for profiling.
-
-### Shared Memory model
-1. Global device memory  
-2. Memory shared across SM 
-3. Threa specific memory (cache)
-4. Block specific memory ( \__shared__ )
-5. 
-
-
-# Execercises To Do
-
-1. Transpose a matrix using a single matrix argument
-2. 
-
-# Library Specific Features
-
-1. Cooperative groups (## Read about this one)
+Use this [link](https://penny-xu.github.io/blog/tiled-matrix-multiplication) to understand

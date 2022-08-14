@@ -7,12 +7,13 @@
 
 1. [Introduction](doc/1_intro.md)
 2. [Basic Concepts](doc/2_concepts.md)
-
+3. [Driver info](doc/3_info.md)
+4. [CUDA Libraries](doc/4_libraries.md)
 ## Cuda Architecture
 1. Shared memory across gpu 
 2. Block level memory  
 3. Individual cache for each thread 
-1. 
+4. 
 
 Compiler used: nvcc
 
@@ -48,12 +49,25 @@ __nvvp__ is the official profiler for CUDA programming. To enable profiling of y
 4. Block specific memory ( \__shared__ )
 5. 
 
+## Library Specific Features
+
+1. Cooperative groups (## Read about this one)
+2. cudastreams (## Read about this one)
+3. Unified memory and prefetch
+4. clock() for profiling
+
+## Concurrency fundamental to CUDA
+
+1. Multiple concurrent kernel execution is possible (if one kernel is not fully utilitising gpu)
+2. Code execution on host can be done in parallel to kernel execution.
+3. Memory transfer can be handled such that the processors are busy with computation at the time of transfer 
+4. 
+
+### Memory access
+Adjacent memory access can be coalesced into a single wide access.
 
 # Execercises To Do
 
 1. Transpose a matrix using a single matrix argument
 2. 
 
-# Library Specific Features
-
-1. Cooperative groups (## Read about this one)
