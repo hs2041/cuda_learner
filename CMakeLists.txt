@@ -56,4 +56,16 @@ if(VIDEOS_ENABLED)
     target_link_libraries(5_cublas_matmul ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
     target_link_libraries(5_cublas_matmul -lcublas -lcurand) # Linking cublas library
 
+    add_executable(6_reduction_base src/videos/6_reduction_base.cu)
+    target_link_libraries(6_reduction_base ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+    target_link_libraries(6_reduction_base -lcublas -lcurand) # Linking cublas library
+
+    add_executable(6_reduction_2 src/videos/6_reduction_2.cu)
+    target_link_libraries(6_reduction_2 ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+    target_link_libraries(6_reduction_2 -lcublas -lcurand) # Linking cublas library
+
+    add_executable(6_reduction_3 src/videos/6_reduction_3.cu)
+    target_link_libraries(6_reduction_3 ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+    target_link_libraries(6_reduction_3 -lcublas -lcurand) # Linking cublas library
+
 endif(VIDEOS_ENABLED)

@@ -55,18 +55,21 @@ __nvvp__ is the official profiler for CUDA programming. To enable profiling of y
 2. cudastreams (## Read about this one)
 3. Unified memory and prefetch
 4. clock() for profiling
+5. CudaEvents  
 
 ## Concurrency fundamental to CUDA
 
 1. Multiple concurrent kernel execution is possible (if one kernel is not fully utilitising gpu)
 2. Code execution on host can be done in parallel to kernel execution.
 3. Memory transfer can be handled such that the processors are busy with computation at the time of transfer 
-4. 
+4. Note that modulo operator is expensive, try to avoid using it
+5. Shared memory bank conflicts
+6. Race condition
 
 ### Memory access
 Adjacent memory access can be coalesced into a single wide access.
 
-# Execercises To Do
+# Excercises To Do
 
 1. Transpose a matrix using a single matrix argument
 2. 

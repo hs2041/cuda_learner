@@ -38,6 +38,9 @@ int main()
     std::cout<< "runtime version:  " << runtime << std::endl;
 
     std::cout<< "Device Global memory (Gb): "<<props.totalGlobalMem/(1<<30)<<std::endl;
+    
+    std::cout<< "No. of registers available per SM: "<<props.regsPerBlock<<std::endl;
+    std::cout<< "Shared memory available: "<<props.sharedMemPerBlock<< std::endl;
     return 0;
 
 }
