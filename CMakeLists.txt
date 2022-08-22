@@ -68,4 +68,12 @@ if(VIDEOS_ENABLED)
     target_link_libraries(6_reduction_3 ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
     target_link_libraries(6_reduction_3 -lcublas -lcurand) # Linking cublas library
 
+    add_executable(6_reduction_4_coop src/videos/6_reduction_4_coop.cu)
+    target_link_libraries(6_reduction_4_coop ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+    target_link_libraries(6_reduction_4_coop -lcublas -lcurand) # Linking cublas library
+
+    add_executable(7_cooperative_groups src/videos/7_cooperative_groups.cu)
+    target_link_libraries(7_cooperative_groups ${OpenCL_LIBRARY} ${GTEST_LIBRARIES} pthread)
+    target_link_libraries(7_cooperative_groups -lcublas -lcurand) # Linking cublas library
+
 endif(VIDEOS_ENABLED)

@@ -51,10 +51,10 @@ __nvvp__ is the official profiler for CUDA programming. To enable profiling of y
 
 ## Library Specific Features
 
-1. Cooperative groups (## Read about this one)
-2. cudastreams (## Read about this one)
+1. cudastreams (## Read about this one)
+2. Cooperative groups allow you to implement synchronisation at multiple levels (https://developer.nvidia.com/blog/cooperative-groups/)
 3. Unified memory and prefetch
-4. clock() for profiling
+4. clock() for profiling (You can find how much time each individual gpu core takes for execution)
 5. CudaEvents  
 
 ## Concurrency fundamental to CUDA
@@ -65,11 +65,27 @@ __nvvp__ is the official profiler for CUDA programming. To enable profiling of y
 4. Note that modulo operator is expensive, try to avoid using it
 5. Shared memory bank conflicts
 6. Race condition
+7. pragma unroll command in the kernel allows you to unroll an entire loop into a set of seperate instructions. This allows you to get rid of the loop check and variable increment condition.
+8. Concurrent writes are not directly possible in CUDA. Atmoic functions can be used for such cases. (https://stackoverflow.com/questions/11773141/what-are-all-the-atomic-operations-in-cuda). There is a compare and swap atomic operation which one can use to update the value of a variable.
+9. The concept of bank conflict (https://stackoverflow.com/questions/3841877/what-is-a-bank-conflict-doing-cuda-opencl-programming)
+10. Understand SIMT properly. A single instruction for a warp is called (a set of 32 threads) together.
+11. Constant memory in GPU cache using the \__constant__ keyword and cudamemcopytoSymbol
+12. Dynamic allocated arrays in GPU shared memory (https://stackoverflow.com/questions/5531247/allocating-shared-memory)
 
+
+
+## Handling non-perfect input size 
+Using a simple condition is the easiest way to get rid of this. Padding is another option. 
 ### Memory access
 Adjacent memory access can be coalesced into a single wide access.
 
-# Excercises To Do
+## OpenACC
+It can easily transform the code from one GPU make to another (AMD and nvidia). The code style used is similar to OpenMP (pragmas). Basically, it looks like OpenMP for GPU programming. OpenACC is generally used with a PGI compiler. 
+
+## Optimization
+Optimizing the code considering the principles of GPU programming (SIMT, memory transfer, memory access, synchronisation, register and shared memory access, grid and block size, SIMT calls are based on warp size, prefetch memory, loop unrolling, avoid accessing same memory multiple times, ) in mind leads to better result.
+
+## Excercises To Do
 
 1. Transpose a matrix using a single matrix argument
 2. 
